@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    #choices {
+      margin: 20px 0;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+    #result {
+      font-size: 20px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  
+  <button  onclick="play('ROCK')" > <img src="rock.PNG" alt="rock" width="100px" height="100px"> ROCK</button>
+  <button onclick="play('PAPER')">  <img src="paper.PNG" alt="Paper"  width="100px" height="100px" > PAPER </button>
+  <button onclick="play('SCISSORS')"> <img src="scissors.PNG" alt="rock"  width="100px" height="100px">  SCISSORS</button>
+  
+  <div id="choices"></div>
+  <div id="result"></div>
+
+  <script>
+    function play(playerChoice) {
+      
+      const choices = ['ROCK', 'PAPER', 'SCISSORS'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      
+      
+      document.getElementById('choices').innerHTML = 
+        `YOU: ${playerChoice}<br>COMPUTER: ${computerChoice}`;
+      
+      
+      let result;
+      if (playerChoice === computerChoice) {
+        result = "TIE!";
+      } else if (
+        (playerChoice === 'ROCK' && computerChoice === 'SCISSORS') ||
+        (playerChoice === 'PAPER' && computerChoice === 'ROCK') ||
+        (playerChoice === 'SCISSORS' && computerChoice === 'PAPER')
+      ) {
+        result = "YOU WIN!";
+      } else {
+        result = "YOU LOSE!";
+      }
+      
+      document.getElementById('result').innerHTML = result;
+    }
+  </script>
+</body>
+</html>
